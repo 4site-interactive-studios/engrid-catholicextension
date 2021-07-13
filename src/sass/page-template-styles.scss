@@ -1,2 +1,17 @@
 /* Add your custom theme styles here */
 
+[data-engrid-theme="catholicextension"]{
+    button,
+    .button,
+    .en__tweetButton a,
+    .radio-to-buttons .en__field--radio input[type=radio]+label,
+    .en__field--give-by-select.en__field--radio input[type=radio]+label,
+    .radio-to-buttons_donationAmt .en__field--donationAmt.en__field--radio input[type=radio]+label,
+    .radio-to-buttons_recurrfreq .en__field--recurrfreq.en__field--radio input[type=radio]+label{
+        text-transform: uppercase;
+    }
+
+    .en__field__error{
+        font-family: var(--p_font-family);
+    }
+}
