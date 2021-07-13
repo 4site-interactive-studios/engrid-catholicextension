@@ -2738,9 +2738,7 @@ body:not([data-engrid-embedded]) #engrid{
   --button_font-size:var(--root_font-size);
   --button_font-weight:initial;
   --button_line-height:normal;
-  --button_background-color:var(--color_primary);
   --button_border-width:1px;
-  --button_border-color:var(--color_primary_accent);
   --button_border-radius:6px;
   --button_padding:1ch 1.2ch;
   --submit__button_padding-top:1ch;
@@ -2947,6 +2945,8 @@ body:not(#en__pagebuilder) .click-to-expand.expanded .click-to-expand-text-wrapp
   --textarea_border-color_hover:var(--input_border-color_hover);
   --textarea_border-bottom-color_hover:var(--textarea_border-color_hover);
   --button_color:var(--color_primary_overlay);
+  --button_background-color:var(--color_primary);
+  --button_border-color:var(--color_primary_accent);
   --button_color_hover:var(--button_color);
   --button_background-color_hover:var(--color_black);
   --button_border-color_hover:var(--button_background-color_hover);
