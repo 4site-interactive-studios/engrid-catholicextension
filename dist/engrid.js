@@ -2692,6 +2692,7 @@ class App extends engrid_ENGrid {
     new PageBackground(); // TODO: Abstract everything to the App class so we can remove custom-methods
 
     inputPlaceholder();
+    preventAutocomplete();
     watchInmemField();
     watchGiveBySelectField();
     SetEnFieldOtherAmountRadioStepValue();
@@ -3338,9 +3339,6 @@ const debugBar = () => {
       if (enGrid) {
         if (enGrid.classList.contains("layout-centercenter1col")) {
           removeClassesByPrefix(enGrid, "layout-");
-          enGrid.classList.add("layout-centercenter1col-wide");
-        } else if (enGrid.classList.contains("layout-centercenter1col-wide")) {
-          removeClassesByPrefix(enGrid, "layout-");
           enGrid.classList.add("layout-centerright1col");
         } else if (enGrid.classList.contains("layout-centerright1col")) {
           removeClassesByPrefix(enGrid, "layout-");
@@ -3502,6 +3500,17 @@ const inputPlaceholder = () => {
 
   if (enAddInputPlaceholder && enFieldBankRoutingNumber) {
     enFieldBankRoutingNumber.placeholder = "Bank Routing Number";
+  }
+};
+const preventAutocomplete = () => {
+  let enFieldDonationAmt = document.querySelector(".en__field--donationAmt.en__field--withOther .en__field__input--other");
+
+  if (enFieldDonationAmt) {
+    enFieldDonationAmt.setAttribute("autocomplete", "off");
+  }
+
+  if (enFieldDonationAmt) {
+    enFieldDonationAmt.setAttribute("data-lpignore", "true");
   }
 };
 const watchInmemField = () => {
@@ -3734,7 +3743,7 @@ const handleCCUpdate = () => {
   const payment_text = field_payment_type.options[field_payment_type.selectedIndex].text;
 
   if (card_type && payment_text != card_type) {
-    field_payment_type.value = Array.from(field_payment_type.options).filter(d => card_values[card_type].indexOf(d.value.toLowerCase()))[0].value;
+    field_payment_type.value = Array.from(field_payment_type.options).filter(d => card_values[card_type].includes(d.value.toLowerCase()))[0].value;
   }
 };
 
@@ -4639,21 +4648,19 @@ class ShowHideRadioCheckboxes {
 // This class works when the user has added ".simple_country_select" as a class in page builder for the Country select
 class SimpleCountrySelect {
   constructor() {
-    var _a;
-
     this.countryWrapper = document.querySelector('.simple_country_select');
-    this.countrySelect = document.querySelector('#en__field_supporter_country');
+    this.countrySelect = document.querySelector('#en__field_supporter_country'); // @TODO Check if there is a country select AN an address1 label, otherwise we can abort the function
 
     if (this.countrySelect) {
-      let countrySelecLabel = this.countrySelect.options[this.countrySelect.selectedIndex].innerHTML;
-      let countrySelecValue = this.countrySelect.options[this.countrySelect.selectedIndex].value;
+      let countrySelectLabel = this.countrySelect.options[this.countrySelect.selectedIndex].innerHTML;
+      let countrySelectValue = this.countrySelect.options[this.countrySelect.selectedIndex].value; // @TODO Update so that it reads "(Outside X?)" where X is the Value of the Country Select. No need for long form version of it.
 
-      if (countrySelecValue == "US") {
-        countrySelecValue = " US";
+      if (countrySelectValue == "US") {
+        countrySelectValue = " US";
       }
 
-      if (countrySelecLabel == "United States") {
-        countrySelecLabel = "the United States";
+      if (countrySelectLabel == "United States") {
+        countrySelectLabel = "the United States";
       }
 
       let countryWrapper = document.querySelector('.simple_country_select');
@@ -4662,8 +4669,8 @@ class SimpleCountrySelect {
         // Remove Country Select tab index
         this.countrySelect.tabIndex = -1; // Find the address label
 
-        let addressLabel = document.querySelector('.en__field--address1 label');
-        let addressWrapper = (_a = addressLabel.parentElement) === null || _a === void 0 ? void 0 : _a.parentElement; // EN does not enforce a labels on fields so we have to check for it
+        let addressLabel = document.querySelector('.en__field--address1 label'); // EN does not enforce a labels on fields so we have to check for it
+        // @TODO Update so that this follows the same pattern / HTML structure as the Tippy tooltips which are added to labels. REF: https://github.com/4site-interactive-studios/engrid-aiusa/blob/6e4692d4f9a28b9668d6c1bfed5622ac0cc5bdb9/src/scripts/main.js#L42
 
         if (addressLabel) {
           // Wrap the address label in a div to break out of the flexbox
@@ -4671,7 +4678,7 @@ class SimpleCountrySelect {
           // Includes both long form and short form variants
 
           let newEl = document.createElement('span');
-          newEl.innerHTML = ' <label id="en_custom_field_simple_country_select_long" class="en__field__label"><a href="javascript:void(0)">(Outside ' + countrySelecLabel + '?)</a></label><label id="en_custom_field_simple_country_select_short" class="en__field__label"><a href="javascript:void(0)">(Outside ' + countrySelecValue + '?)</a></label>';
+          newEl.innerHTML = ' <label id="en_custom_field_simple_country_select_long" class="en__field__label"><a href="javascript:void(0)">(Outside ' + countrySelectLabel + '?)</a></label><label id="en_custom_field_simple_country_select_short" class="en__field__label"><a href="javascript:void(0)">(Outside ' + countrySelectValue + '?)</a></label>';
           newEl.querySelectorAll("a").forEach(el => {
             el.addEventListener("click", this.showCountrySelect.bind(this));
           });
@@ -4789,9 +4796,7 @@ class SrcDefer {
 
 
     for (let i = 0; i < this.videoBackground.length; i++) {
-      let video = this.videoBackground[i];
-      video.setAttribute("loading", "lazy"); // Lets the browser determine when the asset should be downloaded
-      // Process one or more defined sources in the <video> tag
+      let video = this.videoBackground[i]; // Process one or more defined sources in the <video> tag
 
       let videoBackgroundSource = video.querySelectorAll("source");
       let videoBackgroundSourcedDataSrc = this.videoBackgroundSource[i].getAttribute("data-src");
@@ -4916,11 +4921,15 @@ class PageBackground {
   }
 
   hasVideoBackground() {
-    return !!this.pageBackground.querySelector('video');
+    if (this.pageBackground) {
+      return !!this.pageBackground.querySelector('video');
+    }
   }
 
   hasImageBackground() {
-    return !this.hasVideoBackground() && !!this.pageBackground.querySelector('img');
+    if (this.pageBackground) {
+      return !this.hasVideoBackground() && !!this.pageBackground.querySelector('img');
+    }
   }
 
 }
@@ -4995,7 +5004,11 @@ class NeverBounce {
         field.addEventListener("nb:result", function (e) {
           if (e.detail.result.is(window._nb.settings.getAcceptedStatusCodes())) {
             NBClass.setEmailStatus("valid");
-            if (NBClass.nbDate) NBClass.nbDate.value = new Date().toLocaleDateString();
+            if (NBClass.nbDate) NBClass.nbDate.value = new Date().toLocaleDateString('en-US', {
+              year: 'numeric',
+              month: '2-digit',
+              day: '2-digit'
+            });
           } else {
             NBClass.setEmailStatus("invalid");
             if (NBClass.nbDate) NBClass.nbDate.value = "";
@@ -5132,7 +5145,7 @@ class NeverBounce {
       this.nbStatus.value = engrid_ENGrid.getFieldValue("nb-result");
     }
 
-    if (!['catchall', 'valid'].indexOf(engrid_ENGrid.getFieldValue('nb-result'))) {
+    if (!['catchall', 'valid'].includes(engrid_ENGrid.getFieldValue('nb-result'))) {
       this.setEmailStatus("required");
       (_a = this.emailField) === null || _a === void 0 ? void 0 : _a.focus();
       return false;
@@ -5208,6 +5221,8 @@ class ProgressBar {
 
 
 
+
+ // Events
 
 
 ;// CONCATENATED MODULE: ./src/index.ts

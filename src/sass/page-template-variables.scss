@@ -20,7 +20,10 @@
     // --h1_color: initial;
     // --h1_font-size: calc(var(--root_font-size) * var(--scale-up_160pct));
     // --h1_font-weight: initial;
-    // --h1_line-height: initial;
+    --h1_line-height: 1.3;
+
+    // TYPOGRAPHY OTHER H   
+    --h2_line-height: 1.3;
         
     // TYPOGRAPHY P
     --p_font-family: "LFT Etica", sans-serif;
@@ -42,8 +45,8 @@
     // TYPOGRAPHY LABEL
     --label-font-family: "LFT Etica", sans-serif;
     // --label-color: initial;
-    // --label-font-size: var(--root_font-size);
-    --label-font-weight: bold;
+    --label-font-size: calc(var(--root_font-size) - .2rem);
+    --label-font-weight: regular;
     // --label-line-height: initial;
 
     // TYPOGRAPHY INPUT
@@ -69,8 +72,8 @@
 
     // TYPOGRAPHY CHECKBOX INPUT:CHECKED
     --checkbox_color_checked: #ffffff;
-    --checkbox_background-color_checked: #000000;
-    --checkbox_border-color_checked: #000000;
+    --checkbox_background-color_checked:var(--color_primary);
+    // --checkbox_border-color_checked: #000000;
 
     // TYPOGRAPHY BUTTON
     --button_font-family: "LFT Etica ExtraBold", sans-serif;
@@ -96,7 +99,8 @@
     // DONATION PAGE
     // --give-monthly-donation-amount-appended-label: "/mo";
     // --give-annual-donation-amount-appended-label: "/yr";  
-    // --recurring-frequency__button_count: 4;
-    // --donation-amount__button_count: 4;
+    --recurring-frequency__button_count: 4;
+    --radio-to-buttons__button_count:4;
+    --donation-amount__button_count: 4;
     // --give-by-select__button_count: 4;
 }

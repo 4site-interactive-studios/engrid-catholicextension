@@ -14,4 +14,20 @@
     .en__field__error{
         font-family: var(--p_font-family);
     }
+
+    .radio-to-buttons .en__field--radio input[type=radio]+label {
+        white-space:nowrap;
+    }
+
+    label>a {
+        font-family:var(--label-font-family);
+    }
+
+    .body-top {
+        border-radius:10px 10px 0 0;
+    }
+
+    .body-bottom {
+        border-radius:0 0 10px 10px;        
+    }
 }
