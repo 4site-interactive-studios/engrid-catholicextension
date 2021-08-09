@@ -2914,11 +2914,7 @@ body:not(#en__pagebuilder) .click-to-expand.expanded .click-to-expand-text-wrapp
   --textarea_border-bottom-color_hover:var(--textarea_border-color_hover);
   --button_color:var(--color_primary_overlay);
   --button_background-color:var(--color_primary);
-<<<<<<< HEAD
   --button_border-color:var(--button_background-color);
-=======
-  --button_border-color:var(--color_primary_accent);
->>>>>>> a0a333dde11700044e8f72620b3929afa432119f
   --button_color_hover:var(--button_color);
   --button_background-color_hover:var(--color_black);
   --button_border-color_hover:var(--button_background-color_hover);
@@ -6333,6 +6329,8 @@ body:not([data-engrid-debug]) #debug-bar{
   --button_background-color_hover:#881512;
   --button_background-color_checked:#000;
   --button_border-color_checked:var(--button_background-color_checked);
+  --give-monthly-donation-amount-appended-label:"/mo";
+  --give-annual-donation-amount-appended-label:"/yr";
   --recurring-frequency__button_count:4;
   --radio-to-buttons__button_count:4;
   --donation-amount__button_count:4;
