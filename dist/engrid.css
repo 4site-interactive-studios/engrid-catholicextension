@@ -6373,14 +6373,6 @@ body:not([data-engrid-debug]) #debug-bar{
 [data-engrid-theme=catholicextension] label>a{
   font-family:var(--label-font-family);
 }
-
-[data-engrid-theme=catholicextension] .body-top{
-  border-radius:10px 10px 0 0;
-}
-
-[data-engrid-theme=catholicextension] .body-bottom{
-  border-radius:0 0 10px 10px;
-}
 body{
   opacity:1;
   transition:opacity .2s;
