@@ -1,6 +1,21 @@
 /* Add your custom theme styles here */
 
 [data-engrid-theme="catholicextension"]{
+
+    // Hide unused sections
+    .page-alert, .body-bannerOverlay {
+        display:none;
+    }
+
+
+    .body-header {
+        margin-top:1.5rem;
+    }
+
+    .body-footer {
+        margin-bottom:1.5rem;
+    }
+
     button,
     .button,
     .en__tweetButton a,
