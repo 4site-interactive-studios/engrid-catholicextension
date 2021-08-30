@@ -8,7 +8,7 @@
     --error__color: #ff0000;
 
     // TYPOGRAPHY DEFAULT
-    --default_font-family: "Mafra Book", serif;
+    --default_font-family: "LFT Etica", sans-serif;
     // --default_color: initial;
     // --default_font-size: var(--root_font-size);
     // --default_font-weight: initial;
@@ -44,7 +44,7 @@
     // TYPOGRAPHY LABEL
     --label-font-family: "LFT Etica", sans-serif;
     // --label-color: initial;
-    --label-font-size: calc(var(--root_font-size) - .2rem);
+    --label-font-size: .8em;
     --label-font-weight: regular;
     // --label-line-height: initial;
 
@@ -100,6 +100,8 @@
     --give-annual-donation-amount-appended-label: "/yr";  
     --recurring-frequency__button_count: 4;
     --radio-to-buttons__button_count:4;
-    --donation-amount__button_count: 4;
+    --donation-amount__button_count: 3;
+    --radio_box-shadow_selected:#b81d23 0px 0px 0px 6px inset;
+    // --fields_spacing-block:0;
     // --give-by-select__button_count: 4;
 }
