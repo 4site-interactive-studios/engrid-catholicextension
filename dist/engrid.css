@@ -2729,6 +2729,10 @@ body .page-backgroundImage video.crop-on-right{
   transform:translateY(-50%);
 }
 
+.body-banner img{
+  min-width:100%;
+}
+
 .body-banner img[data-src]{
   background-color:var(--engrid__body-banner_background-color);
 }
@@ -6510,6 +6514,7 @@ body:not([data-engrid-debug]) #debug-bar{
   --submit__button_padding-top:2ch;
   --submit__button_padding-bottom:2ch;
   --submit__button_text-transform:uppercase;
+  --engrid__page_background-color:#f3f0ed;
   --engrid__body_background-color:#f3f0ed;
 }
 [data-engrid-theme=catholicextension]#en__pagebuilder .body-bannerOverlay,[data-engrid-theme=catholicextension]#en__pagebuilder .body-bottom,[data-engrid-theme=catholicextension]#en__pagebuilder .body-footer,[data-engrid-theme=catholicextension]#en__pagebuilder .body-footerOutside,[data-engrid-theme=catholicextension]#en__pagebuilder .body-headerOutside,[data-engrid-theme=catholicextension]#en__pagebuilder .body-side,[data-engrid-theme=catholicextension]#en__pagebuilder .content-footer,[data-engrid-theme=catholicextension]#en__pagebuilder .content-footerSpacer,[data-engrid-theme=catholicextension]#en__pagebuilder .content-header,[data-engrid-theme=catholicextension]#en__pagebuilder .content-preFooter,[data-engrid-theme=catholicextension]#en__pagebuilder .page-alert,[data-engrid-theme=catholicextension]#en__pagebuilder .page-backgroundImageOverlay{
