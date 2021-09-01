@@ -1217,8 +1217,8 @@ body[data-engrid-debug]:before{
 
 .en__ecarditems__prevclose{
   color:var(--color_black);
+  font-family:Arial,sans-serif;
   line-height:1.5625rem;
-  font:Arial,sans-serif;
   width:1.5625rem;
   z-index:9999;
 }
@@ -2081,6 +2081,7 @@ a:focus,a:hover{
   --textarea_border-radius:var(--input_border-radius);
   --textarea_box-shadow:var(--input_box-shadow);
   --textarea_padding:var(--input_padding);
+  --textarea_min-height:calc(var(--textarea_padding) + var(--textarea_font-size)*10);
   --textarea_box-shadow_hover:var(--input_box-shadow_hover);
 }
 .en__component--formblock,.en__component--svblock{
@@ -2468,7 +2469,7 @@ select.en__field__input--select:focus,select.en__field__input--select:hover,sele
   line-height:var(--textarea_line-height);
   margin:0;
   max-width:100%;
-  min-height:calc(1rem + 10ch);
+  min-height:var(--textarea_min-height);
   min-width:auto;
   padding:var(--textarea_padding);
   resize:vertical;
@@ -2855,6 +2856,7 @@ body{
 body:not(#en__pagebuilder) .click-to-expand:not(.expanded){
   cursor:pointer;
   max-height:var(--click-to-expand__copy-area_height);
+  overflow:hidden;
 }
 
 body:not(#en__pagebuilder) .click-to-expand:not(.expanded) .click-to-expand-text-wrapper{
@@ -3522,13 +3524,18 @@ button.en__ecarditems__addrecipient{
 }
 
 button.en__ecarditems__prevclose{
-  background-color:initial;
+  align-items:center;
+  background-color:#fff;
   border:none;
+  display:flex;
   font-size:2rem;
+  height:auto;
+  justify-content:center;
   margin:0;
-  padding:0;
-  right:-29px;
-  top:5px;
+  padding:.35ch;
+  right:0;
+  top:0;
+  width:auto;
 }
 
 .en__ecarditems__showprev{
@@ -4701,6 +4708,7 @@ form>.en__component--row.en__component--advrow{
 
 form>.en__component--row.en__component--advrow>*{
   display:grid;
+  grid-auto-rows:min-content;
 }
 
 form>.en__component--row.en__component--advrow>*>*{
@@ -6432,35 +6440,6 @@ body:not([data-engrid-debug]) #debug-bar{
 #en__pagebuilder video[data-src]{
   background-image:url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0MDAgMzAwIj48cGF0aCBmaWxsPSIjY2NjIiBkPSJNMCAwaDQwMHYzMDBIMHoiLz48dGV4dCB4PSI1MCUiIHk9IjUwJSIgZG9taW5hbnQtYmFzZWxpbmU9Im1pZGRsZSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9Im1vbm9zcGFjZSIgZm9udC1zaXplPSIyNiIgZmlsbD0iIzMzMyI+TGF6eSBMb2FkZWQgVmlkZW88L3RleHQ+PC9zdmc+);
 }
-[data-engrid-theme=catholicextension]{
-  --color_primary:#b81d23;
-  --error__color:red;
-  --default_font-family:"LFT Etica", sans-serif;
-  --h1_font-family:"Mafra Black", serif;
-  --h1_line-height:1.3;
-  --h2_line-height:1.3;
-  --p_font-family:"LFT Etica", sans-serif;
-  --label-font-family:"LFT Etica", sans-serif;
-  --label-font-size:.8em;
-  --label-font-weight:regular;
-  --input_font-family:"LFT Etica", sans-serif;
-  --input_background-color:#fff;
-  --input_border-radius:0px;
-  --checkbox_color_checked:#fff;
-  --checkbox_background-color_checked:var(--color_primary);
-  --button_font-family:"LFT Etica ExtraBold", sans-serif;
-  --button_border-color:var(--button_background-color);
-  --button_border-radius:0px;
-  --button_background-color_hover:#881512;
-  --button_background-color_checked:#000;
-  --button_border-color_checked:var(--button_background-color_checked);
-  --give-monthly-donation-amount-appended-label:"/mo";
-  --give-annual-donation-amount-appended-label:"/yr";
-  --recurring-frequency__button_count:4;
-  --radio-to-buttons__button_count:4;
-  --donation-amount__button_count:3;
-  --radio_box-shadow_selected:#b81d23 0px 0px 0px 6px inset;
-}
 @font-face{
   font-display:swap;
   font-family:Mafra Black;
@@ -6476,40 +6455,106 @@ body:not([data-engrid-debug]) #debug-bar{
 @font-face{
   font-display:swap;
   font-family:LFT Etica;
+  font-weight:400;
   src:url(https://acb0a5d73b67fccd4bbe-c2d8138f0ea10a18dd4c43ec3aa4240a.ssl.cf5.rackcdn.com/10026/LFT_Etica_Reg.otf?v=1626192758000) format("opentype");
 }
 
 @font-face{
   font-display:swap;
-  font-family:LFT Etica ExtraBold;
+  font-family:LFT Etica;
+  font-weight:900;
   src:url(https://acb0a5d73b67fccd4bbe-c2d8138f0ea10a18dd4c43ec3aa4240a.ssl.cf5.rackcdn.com/10026/LFT_Etica_Extrabold.otf) format("opentype");
 }
-[data-engrid-theme=catholicextension] .body-bannerOverlay,[data-engrid-theme=catholicextension] .page-alert{
-  display:none;
+
+[data-engrid-theme=catholicextension]{
+  --color_primary:#b81d23;
+  --error__color:red;
+  --default_font-family:"LFT Etica", sans-serif;
+  --h1_font-family:"Mafra Black", serif;
+  --h1_line-height:1.3;
+  --h2_line-height:1.3;
+  --p_font-family:"LFT Etica", sans-serif;
+  --label-font-family:"LFT Etica", sans-serif;
+  --label-font-size:.8em;
+  --label-font-weight:regular;
+  --input_font-family:"LFT Etica", sans-serif;
+  --input_background-color:#fff;
+  --input_border-color:#6b6b6b;
+  --input_border-radius:0px;
+  --checkbox_color_checked:#fff;
+  --checkbox_background-color_checked:var(--color_primary);
+  --button_font-family:"LFT Etica", sans-serif;
+  --button_color:#383838;
+  --button_font-weight:900;
+  --button_background-color:#fff;
+  --button_border-width:1px;
+  --button_border-color:var(--button_color);
+  --button_border-radius:0px;
+  --button_padding:1.2ch 1.2ch;
+  --button_color_hover:#fff;
+  --button_background-color_hover:#881512;
+  --give-monthly-donation-amount-appended-label:"/mo";
+  --give-annual-donation-amount-appended-label:"/yr";
+  --recurring-frequency__button_count:3;
+  --radio-to-buttons__button_count:3;
+  --donation-amount__button_count:3;
+  --radio_box-shadow_selected:#b81d23 0px 0px 0px 6px inset;
+  --submit__button_border-color:#881512;
+  --submit__button_background-color:#881512;
+  --submit__button_color:#fff;
+  --submit__button_border-color_hover:#881512;
+  --submit__button_background-color_hover:#881512;
+  --submit__button_color_hover:#fff;
+  --submit__button_padding-top:2ch;
+  --submit__button_padding-bottom:2ch;
+  --engrid__body_background-color:#f3f0ed;
+}
+[data-engrid-theme=catholicextension]#en__pagebuilder .body-bannerOverlay,[data-engrid-theme=catholicextension]#en__pagebuilder .body-bottom,[data-engrid-theme=catholicextension]#en__pagebuilder .body-footer,[data-engrid-theme=catholicextension]#en__pagebuilder .body-footerOutside,[data-engrid-theme=catholicextension]#en__pagebuilder .body-headerOutside,[data-engrid-theme=catholicextension]#en__pagebuilder .body-side,[data-engrid-theme=catholicextension]#en__pagebuilder .content-footer,[data-engrid-theme=catholicextension]#en__pagebuilder .content-footerSpacer,[data-engrid-theme=catholicextension]#en__pagebuilder .content-header,[data-engrid-theme=catholicextension]#en__pagebuilder .content-preFooter,[data-engrid-theme=catholicextension]#en__pagebuilder .page-alert,[data-engrid-theme=catholicextension]#en__pagebuilder .page-backgroundImageOverlay{
+  clip:rect(0 0 0 0);
+  border:0;
+  -webkit-clip-path:inset(100%);
+  clip-path:inset(100%);
+  height:1px;
+  margin:-1px;
+  overflow:hidden;
+  padding:0;
+  position:absolute;
+  white-space:nowrap;
+  width:1px;
 }
 
 [data-engrid-theme=catholicextension] .body-header{
-  margin-top:1.5rem;
+  padding-top:30px;
 }
 
-[data-engrid-theme=catholicextension] .body-footer{
-  margin-bottom:1.5rem;
+@media screen and (min-width:768px){
+  [data-engrid-theme=catholicextension][data-engrid-layout=centercenter1col] .body-header,[data-engrid-theme=catholicextension][data-engrid-layout=centerleft1col] .body-header,[data-engrid-theme=catholicextension][data-engrid-layout=centerright1col] .body-header{
+    margin-top:80px;
+  }
+  [data-engrid-theme=catholicextension][data-engrid-layout=centercenter1col] .body-footer,[data-engrid-theme=catholicextension][data-engrid-layout=centerleft1col] .body-footer,[data-engrid-theme=catholicextension][data-engrid-layout=centerright1col] .body-footer{
+    margin-bottom:80px;
+  }
 }
 
-[data-engrid-theme=catholicextension] .button,[data-engrid-theme=catholicextension] .en__field--give-by-select.en__field--radio input[type=radio]+label,[data-engrid-theme=catholicextension] .en__tweetButton a,[data-engrid-theme=catholicextension] .radio-to-buttons .en__field--radio input[type=radio]+label,[data-engrid-theme=catholicextension] .radio-to-buttons_donationAmt .en__field--donationAmt.en__field--radio input[type=radio]+label,[data-engrid-theme=catholicextension] .radio-to-buttons_recurrfreq .en__field--recurrfreq.en__field--radio input[type=radio]+label,[data-engrid-theme=catholicextension] button{
-  text-transform:uppercase;
+@media screen and (max-width:768px){
+  [data-engrid-theme=catholicextension][data-engrid-layout=centercenter1col],[data-engrid-theme=catholicextension][data-engrid-layout=centerleft1col],[data-engrid-theme=catholicextension][data-engrid-layout=centerright1col]{
+    --engrid__body_padding:0px 1.25rem;
+  }
 }
 
-[data-engrid-theme=catholicextension] .en__field__error{
-  font-family:var(--p_font-family);
+@media screen and (min-width:900px){
+  [data-engrid-theme=catholicextension][data-engrid-layout=centercenter2col] .body-header{
+    margin-top:80px;
+  }
+  [data-engrid-theme=catholicextension][data-engrid-layout=centercenter2col] .body-footer{
+    margin-bottom:80px;
+  }
 }
 
-[data-engrid-theme=catholicextension] .radio-to-buttons .en__field--radio input[type=radio]+label{
-  white-space:nowrap;
-}
-
-[data-engrid-theme=catholicextension] label>a{
-  font-family:var(--label-font-family);
+@media screen and (max-width:900px){
+  [data-engrid-theme=catholicextension][data-engrid-layout=centercenter2col]{
+    --engrid__body_padding:0px 1.25rem;
+  }
 }
 body{
   opacity:1;

@@ -61,7 +61,8 @@ font-display: swap
 @font-face {
 font-family: "LFT Etica";
 src: url("https://acb0a5d73b67fccd4bbe-c2d8138f0ea10a18dd4c43ec3aa4240a.ssl.cf5.rackcdn.com/10026/LFT_Etica_Reg.otf?v=1626192758000") format("opentype");
-font-display: swap
+font-display: swap;
+font-weight: 400;
 }
 
 // @font-face {
@@ -83,7 +84,8 @@ font-display: swap
 // }
 
 @font-face {
-font-family: "LFT Etica ExtraBold";
+font-family: "LFT Etica";
 src: url("https://acb0a5d73b67fccd4bbe-c2d8138f0ea10a18dd4c43ec3aa4240a.ssl.cf5.rackcdn.com/10026/LFT_Etica_Extrabold.otf") format("opentype");
-font-display: swap
+font-display: swap;
+font-weight: 900;
 }
