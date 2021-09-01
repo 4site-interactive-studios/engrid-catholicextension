@@ -7,10 +7,15 @@
   />
   <ul class="en__errorList"></ul>
 
-  <a href="#" class="button" onclick="document.body.classList.toggle('debug-layout');">Debug Layout</a>
-  <a href="#" class="button" onclick="document.body.classList.toggle('debug-image-sizes');">Debug Image Sizes</a>
-  <a href="#" class="button" onclick="document.body.classList.toggle('debug-accessability');">Debug Accessability</a>
-
+  <span id="debug-bar">
+    <span id="buttons-wrapper">
+      <p>Debug:</p>
+      <a href="#" class="button" onclick="document.body.setAttribute('data-engrid-debug', 'layout');">Layout</a>
+      <a href="#" class="button" onclick="document.body.setAttribute('data-engrid-debug', 'image-sizes');">Image Sizes</a>
+      <a href="#" class="button" onclick="document.body.setAttribute('data-engrid-debug', 'Accessability');">Accessability</a>
+      <a href="#" class="button" onclick="document.body.toggleAttribute('data-engrid-debug');">End Debug</a>
+    </span>
+  </span>
   <div class="en__component en__component--row en__component--advrow">
     <div
       class="en__component en__component en__component--column en__component--advcolumn page-alert"
@@ -49,7 +54,6 @@
     <div class="brand-guide-section"><include src="src/templates/includes/brand-guide-elements/click-to-call.html" locals='{"theme": "engrid",}'></include></div>
     <div class="brand-guide-section"><include src="src/templates/includes/brand-guide-elements/donation-page.html" locals='{"theme": "engrid",}'></include></div>
     <div class="brand-guide-section"><include src="src/templates/includes/brand-guide-elements/ecards.html" locals='{"theme": "engrid",}'></include></div>
-    <div class="brand-guide-section"><include src="src/templates/includes/brand-guide-elements/ecommerce.html" locals='{"theme": "engrid",}'></include></div>
     <div class="brand-guide-section"><include src="src/templates/includes/brand-guide-elements/email-to-target.html" locals='{"theme": "engrid",}'></include></div>
     <div class="brand-guide-section"><include src="src/templates/includes/brand-guide-elements/event.html" locals='{"theme": "engrid",}'></include></div>
     <div class="brand-guide-section"><include src="src/templates/includes/brand-guide-elements/membership.html" locals='{"theme": "engrid",}'></include></div>
@@ -57,6 +61,7 @@
     <div class="brand-guide-section"><include src="src/templates/includes/brand-guide-elements/premium-donation.html" locals='{"theme": "engrid",}'></include></div>
     <div class="brand-guide-section"><include src="src/templates/includes/brand-guide-elements/survey.html" locals='{"theme": "engrid",}'></include></div>
     <div class="brand-guide-section"><include src="src/templates/includes/brand-guide-elements/tweet-to-target.html" locals='{"theme": "engrid",}'></include></div>
+    <div class="brand-guide-section"><include src="src/templates/includes/brand-guide-elements/ecommerce.html" locals='{"theme": "engrid",}'></include></div> <!-- Placed last because of its sticky header -->
 
     </div>
     <div

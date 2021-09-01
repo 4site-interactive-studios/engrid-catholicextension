@@ -5389,13 +5389,13 @@ const options = {
   applePay: false,
   CapitalizeFields: true,
   ClickToExpand: true,
-  CurrencySymbol: '$',
-  CurrencySeparator: '.',
+  CurrencySymbol: "$",
+  CurrencySeparator: ".",
   MediaAttribution: true,
   SkipToMainContentLink: true,
   SrcDefer: true,
   // ProgressBar: true,
-  Debug: App.getUrlParameter('debug') == 'true' ? true : false,
+  Debug: App.getUrlParameter("debug") == "true" ? true : false,
   onLoad: () => console.log("Starter Theme Loaded"),
   onResize: () => console.log("Starter Theme Window Resized")
 };
