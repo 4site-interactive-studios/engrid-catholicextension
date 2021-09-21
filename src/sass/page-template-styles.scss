@@ -4,7 +4,7 @@
 
 // All CSS Custom Properties should be scoped to the theme using CSS Data Attributes.
 [data-engrid-theme="catholicextension"]{
-    --color_primary: #881512;
+    --color_primary: #b91e23;
     --error__color: #ff0000;
 
     // TYPOGRAPHY DEFAULT
@@ -91,7 +91,7 @@
 
     // TYPOGRAPHY BUTTON:HOVER
     --button_color_hover: #ffffff;
-    --button_background-color_hover: #881512;
+    --button_background-color_hover: #b91e23;
     // --button_border-color_hover: var(--button_background-color_hover);
 
     // TYPOGRAPHY BUTTON:SELECTED
@@ -108,7 +108,7 @@
     --recurring-frequency__button_count: 3;
     --radio-to-buttons__button_count:3;
     --donation-amount__button_count: 3;
-    --radio_box-shadow_selected:#b81d23 0px 0px 0px 6px inset;
+    --radio_box-shadow_selected:#b91e23 0px 0px 0px 6px inset;
     // --fields_spacing-block:0;
     // --give-by-select__button_count: 4;
 
@@ -117,11 +117,11 @@
     // --give-by-select__button_font-weight: 900;
     // --submit__button_font-weight: 900;
 
-    --submit__button_border-color: #881512;
-    --submit__button_background-color: #881512;
+    --submit__button_border-color: #b91e23;
+    --submit__button_background-color: #b91e23;
     --submit__button_color: #ffffff;
-    --submit__button_border-color_hover: #881512;
-    --submit__button_background-color_hover: #881512;
+    --submit__button_border-color_hover: #b91e23;
+    --submit__button_background-color_hover: #b91e23;
     --submit__button_color_hover: #ffffff;
     --submit__button_padding-top: 2ch;
     --submit__button_padding-bottom: 2ch;
@@ -141,9 +141,8 @@
         .body-bannerOverlay,
         .body-side,
         .body-bottom,
-        .body-footerOutside,
         .body-footer,
-        .content-footerSpacer,
+        .body-footerOutside,
         .content-preFooter,
         .content-footer,
         .page-backgroundImageOverlay {
@@ -188,8 +187,11 @@
             }
         }
 
-        @media screen and (max-width: $one_col_content-column_min-width) {
+        @media screen and (max-width: $one_col_content-column_min-width - 1px) {
             --engrid__body_padding: 0px 1.25rem;
+            --recurring-frequency__button_count: 1;
+            --donation-amount__button_count: 2;
+            --give-by-select__button_count: 1;
         }
     }
 
@@ -204,8 +206,11 @@
             }
         }
 
-        @media screen and (max-width: $two_col_content-column_min-width) {
+        @media screen and (max-width: $two_col_content-column_min-width - 1px) {
             --engrid__body_padding: 0px 1.25rem;
+            --recurring-frequency__button_count: 1;
+            --donation-amount__button_count: 2;
+            --give-by-select__button_count: 1;
         }
     }
 
@@ -233,4 +238,16 @@
     // label>a {
     //     font-family:var(--label-font-family);
     // }
+
+    &[data-engrid-embedded] {  
+        .body-header,
+        .body-footer{
+            margin: 0;
+            padding: 0;
+
+            > *{
+                display: none;
+            }
+        }
+    }
 }
