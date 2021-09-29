@@ -7073,6 +7073,7 @@ body:not([data-engrid-debug]) #debug-bar{
   --submit__button_text-transform:uppercase;
   --engrid__page_background-color:#f3f0ed;
   --engrid__body_background-color:#f3f0ed;
+  --engrid__body-banner_padding:var(--engrid__body-main_padding);
 }
 [data-engrid-theme=catholicextension]#en__pagebuilder .body-bannerOverlay,[data-engrid-theme=catholicextension]#en__pagebuilder .body-bottom,[data-engrid-theme=catholicextension]#en__pagebuilder .body-footer,[data-engrid-theme=catholicextension]#en__pagebuilder .body-footerOutside,[data-engrid-theme=catholicextension]#en__pagebuilder .body-headerOutside,[data-engrid-theme=catholicextension]#en__pagebuilder .body-side,[data-engrid-theme=catholicextension]#en__pagebuilder .content-footer,[data-engrid-theme=catholicextension]#en__pagebuilder .content-header,[data-engrid-theme=catholicextension]#en__pagebuilder .content-preFooter,[data-engrid-theme=catholicextension]#en__pagebuilder .page-alert,[data-engrid-theme=catholicextension]#en__pagebuilder .page-backgroundImageOverlay{
   clip:rect(0 0 0 0);
